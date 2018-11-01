@@ -1,0 +1,15 @@
+---
+# tasks file for munin-node
+- name: Instalando Munin-Node.
+  apt: name=munin-node state=installed
+ 
+- name: cambiando index
+  template:
+    src: index.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: 0644
+    
+- name: Iniciando Servicios Munin-Node.
+  service: name=munin-node state=started enabled=yes

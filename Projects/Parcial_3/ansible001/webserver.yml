@@ -1,0 +1,6 @@
+---
+- name: Configuracion de apache
+  hosts: web, node
+  remote_user: root
+  roles:
+    - webserver

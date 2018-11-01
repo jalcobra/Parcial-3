@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="https://3.bp.blogspot.com/-m84Rl7DhvF0/WaeVd4InVSI/AAAAAAAAAGo/RqG3TCkHDqkrA3SzQmOunL-oHGEqJns3QCLcBGAs/s1600/favicon.ico" rel="shortcut icon" />
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: #FAFAFA;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.wrap {
+    margin: auto;
+    max-width: 800px;
+    width: 90%;
+}
+
+.principal {
+    background: #F44336;
+    border-top: 20px solid #D32F2F;
+    color: #fff;
+    padding: 50px 0;
+    width: 100%;
+}
+
+.principal .formulario {
+    color: #212121;
+    text-align: center;
+}
+
+.principal .formulario input[type=text] {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+.principal .formulario input[type=text].error {
+    border: 5px solid #D32F2F;
+    color: red;
+}
+
+.principal .formulario .boton {
+    background: none;
+    border: 1px solid #D32F2F;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    padding: 15px;
+}
+
+.principal .formulario .boton:hover {
+    border: 1px solid #fff;
+}
+
+/* - Tareas - */
+.tareas .lista {
+    list-style: none;
+}
+
+.tareas .lista li {
+    border-bottom: 1px solid #B6B6B6;
+}
+
+.tareas .lista li a {
+    color: #212121;
+    display: block;
+    padding: 20px 0;
+    text-decoration: none;
+}
+
+.tareas .lista li a:hover {
+    text-decoration: line-through;
+}
+    </style>
+    <link href="favicon.ico" rel="shortcut icon" />
+	
+	<title>T00045139 - Tercer Parcial</title>
+</head>
+<body>
+
+	<div class="principal">
+        <div class="wrap">
+        <p>Edilberto Marrugo Gutiérrez - T00045139 - Tercer Parcial - Cloud Computing - IaaS, PaaS - Usuario numero: <a href="http://es.web-counter.net" title="contador de visitas"><img src="http://www.web-counter.net/count_20091204.php?c=17A72e8kBVE" style="border:0;padding:0;margin:0;" alt="contador de visitas"></p>
+            <form class="formulario" action="">
+                <input type="text" id="tareaInput" placeholder="Agrega tu tarea">
+                <input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
+            </form>
+        </div>
+    </div>
+
+    <div class="tareas">
+        <div class="wrap">
+            <ul class="lista" id="lista">
+                <li><a href="#">1 hacer el parcial 12:00 - PM.</a></li>
+                <li><a href="#">2 Almorzar 1:00 - PM.</a></li>
+                <li><a href="#">3 Estudiar Docker 2:00 - PM.</a></li>
+            </ul>
+        </div>
+        <script>
+            
+            (function(){
+
+    //variables
+
+    var lista = document.getElementById("lista"),
+    tareaInput = document.getElementById("tareaInput"),
+    btnNuevaTarea = document.getElementById("btn-agregar");
+
+    //funciones
+    var agregarTarea = function(){
+        var tarea = tareaInput.value,
+            nuevaTarea = document.createElement("li"),
+            enlace = document.createElement("a"),
+            contenido = document.createTextNode(tarea);
+
+            if (tarea === "") {
+                tareaInput.setAttribute("placeholder","Agregar una Tarea valida");
+                tareaInput.className="error"
+                return false;
+            }
+            // agregamos el contenido al enlace
+            enlace.appendChild(contenido);
+            //le establecemos un atributo a href
+            enlace.setAttribute("href","##");
+            // agregamos en enlace (a) a la nueva tarea (li)
+            nuevaTarea.appendChild(enlace);
+            //agregamos la nueva tarea a la lista
+            lista.appendChild(nuevaTarea);
+            //depues que se ejecute todo borrar lo que ya se deja escrito
+            tareaInput.value="";
+
+            //para que agregue el elemento para poder eliminar
+            for (var i = 0; i <= lista.children.length - 1; i++) {
+            lista.children[i].addEventListener("click",function(){
+            this.parentNode.removeChild(this);
+        });
+
+    }
+
+    };
+    var comprobarInput = function(){
+        tareaInput.className = "";
+        tareaInput.setAttribute("placeholder", "Agrega tu tarea");
+    };
+    var eliminarTarea = function(){
+        this.parentNode.removeChild(this);
+    };
+
+    //eventos
+    //agregar tarea
+    btnNuevaTarea.addEventListener("click",agregarTarea);
+
+    //comprobar Input
+    tareaInput.addEventListener("click",comprobarInput);
+
+    //borrar elementos de la lista
+    for (var i = 0; i <= lista.children.length - 1; i++) {
+        lista.children[i].addEventListener("click",eliminarTarea)
+    }
+
+}());
+        </script>
+</body>
+</html>

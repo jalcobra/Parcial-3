@@ -1,0 +1,6 @@
+---
+- name: Munin master installation
+  hosts: node
+  remote_user: root
+  roles:
+    - munin
